@@ -1834,7 +1834,7 @@ end
 end
 
 end 
-if msg.content.Fastbots == "messagePinMessage" then -- رساله التثبيت
+if msg.content.Fastbots == "messagePinMessage" then -- رسالة التثبيت
 local Pin_Msg = Redis:get(Fast.."lockpin"..msg_chat_id)
 if Pin_Msg and not msg.Manger then
 if Pin_Msg:match("(%d+)") then 
@@ -2725,7 +2725,7 @@ Redis:sadd(Fast.."List:Filter"..msg_chat_id,'text:'..text)
 Filters = 'نص'
 end
 Redis:set(Fast..'FilterText'..msg_chat_id..':'..msg.sender_id.user_id,'true1')
-return send(msg_chat_id,msg_id,"\n• ارسل تحذير ( "..Filters.." ) عند ارساله","md",true)  
+return send(msg_chat_id,msg_id,"\n• ارسل تحذير ( "..Filters.." ) عند ارسالة","md",true)  
 end
 end
 if text and (Redis:get(Fast..'FilterText'..msg_chat_id..':'..msg.sender_id.user_id) == 'true1') then
@@ -2772,7 +2772,7 @@ DelFilters = msg.content.sticker.sticker.id
 statusfilter = 'الملصق'
 elseif text then
 DelFilters = text
-statusfilter = 'الرساله'
+statusfilter = 'الرسالة'
 end
 local ReplyFilters = Redis:get(Fast.."Filter:Group:"..DelFilters..msg_chat_id)
 if ReplyFilters and not msg.Special then
@@ -2934,7 +2934,7 @@ Redis:sadd(Fast.."List:Manager"..msg_chat_id.."", text)
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي الرد سواء كان 
 ❨ ملف •ملصق •متحركة •صورة
- •فيديو •بصمه الفيديو •بصمه •صوت •رساله ❩
+ •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ↯︙يمكنك اضافة الى النص •
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
  `#username` ↬ معرف المستخدم
@@ -3129,7 +3129,7 @@ Redis:sadd(Fast.."List:Rd:Sudo", text)
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي الرد سواء كان 
 ❨ ملف •ملصق •متحركة •صورة
- •فيديو •بصمه الفيديو •بصمه •صوت •رساله ❩
+ •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ↯︙يمكنك اضافة الى النص •
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
  `#username` ↬ معرف المستخدم
@@ -3798,7 +3798,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast..'All:FilterText'..msg_chat_id..':'..msg.sender_id.user_id,'true')
-return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رساله } *',"md",true)  
+return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رسالة } *',"md",true)  
 end    
 if text == "الغاء منع عام" then    
 if not msg.Admin then
@@ -3813,7 +3813,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast..'All:FilterText'..msg_chat_id..':'..msg.sender_id.user_id,'DelFilterq')
-return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رساله } *',"md",true)  
+return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رسالة } *',"md",true)  
 end
 if (Redis:get(Fast..'All:FilterText'..msg_chat_id..':'..msg.sender_id.user_id) == 'true') then
 if text or msg.content.photo or msg.content.animation or msg.content.sticker then
@@ -3835,7 +3835,7 @@ Redis:sadd(Fast.."All:List:Filter",'text:'..text)
 Filters = 'نص'
 end
 Redis:set(Fast..'All:FilterText'..msg_chat_id..':'..msg.sender_id.user_id,'true1')
-return send(msg_chat_id,msg_id,"\n• ارسل تحذير ( "..Filters.." ) عند ارساله","md",true)  
+return send(msg_chat_id,msg_id,"\n• ارسل تحذير ( "..Filters.." ) عند ارسالة","md",true)  
 end
 end
 if text and (Redis:get(Fast..'All:FilterText'..msg_chat_id..':'..msg.sender_id.user_id) == 'true1') then
@@ -3860,7 +3860,7 @@ DelFilters = msg.content.sticker.sticker.id
 statusfilter = 'الملصق'
 elseif text then
 DelFilters = text
-statusfilter = 'الرساله'
+statusfilter = 'الرسالة'
 end
 local ReplyFilters = Redis:get(Fast.."All:Filter:Group:"..DelFilters)
 if ReplyFilters and not msg.Special then
@@ -4685,7 +4685,7 @@ end
 local list = Redis:smembers(Fast..'List:array')
 text = "  •قائمة الردود المتعدده \n• ━━━━ Fast ━━━━━• \n"
 for k,v in pairs(list) do
-text = text..""..k..">> ("..v..") » {رساله}\n"
+text = text..""..k..">> ("..v..") » {رسالة}\n"
 end
 if #list == 0 then
 text = "  •لا يوجد ردود متعدده"
@@ -5457,7 +5457,7 @@ https.request("https://api.telegram.org/bot"..Token.."/deleteMessage?chat_id="..
 mm = mm - 1
 xxx = xxx +1
 end
-send(msg_chat_id, msg_id, "• تم مسح "..xxx.. ' رساله', 'md')
+send(msg_chat_id, msg_id, "• تم مسح "..xxx.. ' رسالة', 'md')
 end
 
 if text and text:match('^مسح (%d+)$') then
@@ -5487,7 +5487,7 @@ for i=1,tonumber(NumMessage) do
 local deleteMessages = bot.deleteMessages(msg.chat_id,{[1]= Message})
 Message = Message - 1048576
 end
-send(msg_chat_id, msg_id, "• تم مسح "..NumMessage.. ' رساله', 'md')
+send(msg_chat_id, msg_id, "• تم مسح "..NumMessage.. ' رسالة', 'md')
 end
 
 
@@ -8426,7 +8426,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast..'FilterText'..msg_chat_id..':'..senderr,'true')
-return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رساله } *',"md",true)  
+return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رسالة } *',"md",true)  
 end    
 if text == "الغاء منع" then    
 if not msg.Admin then
@@ -8441,7 +8441,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast..'FilterText'..msg_chat_id..':'..senderr,'DelFilter')
-return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رساله } *',"md",true)  
+return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رسالة } *',"md",true)  
 end
 
 if text == "اضف امر" then
@@ -8555,7 +8555,7 @@ end
 if GetInfoBot(msg).PinMsg == false then
 return send(msg_chat_id,msg_id,'\n*• البوت ليس لديه صلاحيه تثبيت الرسائل* ',"md",true)  
 end
-send(msg_chat_id,msg_id,"\n• تم تثبيت الرساله","md",true)
+send(msg_chat_id,msg_id,"\n• تم تثبيت الرسالة","md",true)
 local Message_Reply = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local PinMsg = bot.pinChatMessage(msg_chat_id,Message_Reply.id,true)
 end
@@ -8577,7 +8577,7 @@ end
 if GetInfoBot(msg).PinMsg == false then
 return send(msg_chat_id,msg_id,'\n*• البوت ليس لديه صلاحيه تثبيت الرسائل* ',"md",true)  
 end
-send(msg_chat_id,msg_id,"\n• تم الغاء تثبيت الرساله","md",true)
+send(msg_chat_id,msg_id,"\n• تم الغاء تثبيت الرسالة","md",true)
 bot.unpinChatMessage(msg_chat_id) 
 end
 if text == 'الغاء تثبيت الكل' then
@@ -10338,7 +10338,7 @@ db = "بصمه 📢"
 elseif Redis:get(Fast.."Add:Rd:Manager:Stekrs"..v..msg_chat_id) then
 db = "ملصق 🃏"
 elseif Redis:get(Fast.."Add:Rd:Manager:Text"..v..msg_chat_id) then
-db = "رساله ✉"
+db = "رسالة ✉"
 elseif Redis:get(Fast.."Add:Rd:Manager:Photo"..v..msg_chat_id) then
 db = "صورة 🎇"
 elseif Redis:get(Fast.."Add:Rd:Manager:Video"..v..msg_chat_id) then
@@ -10452,7 +10452,7 @@ db = "بصمه 📢"
 elseif Redis:get(Fast.."Add:Rd:Sudo:stekr"..v) then
 db = "ملصق 🃏"
 elseif Redis:get(Fast.."Add:Rd:Sudo:Text"..v) then
-db = "رساله ✉"
+db = "رسالة ✉"
 elseif Redis:get(Fast.."Add:Rd:Sudo:Photo"..v) then
 db = "صورة 🎇"
 elseif Redis:get(Fast.."Add:Rd:Sudo:Video"..v) then
@@ -10533,7 +10533,7 @@ Redis:setex(Fast.."Broadcasting:Users" .. msg_chat_id .. ":" .. senderr, 600, tr
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي سواء كان 
 ❨ ملف •ملصق •متحركة •صورة
- •فيديو •بصمه الفيديو •بصمه •صوت •رساله ❩
+ •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ↯︙للخروج ارسل ( الغاء )
  ✓
@@ -10557,7 +10557,7 @@ Redis:setex(Fast.."Broadcasting:Groups" .. msg_chat_id .. ":" .. senderr, 600, t
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي سواء كان 
 ❨ ملف •ملصق •متحركة •صورة
- •فيديو •بصمه الفيديو •بصمه •صوت •رساله ❩
+ •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ↯︙للخروج ارسل ( الغاء )
  ✓
@@ -10581,7 +10581,7 @@ Redis:setex(Fast.."Broadcasting:Groups:Pin" .. msg_chat_id .. ":" .. senderr, 60
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي سواء كان 
 ❨ ملف •ملصق •متحركة •صورة
- •فيديو •بصمه الفيديو •بصمه •صوت •رساله ❩
+ •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ↯︙للخروج ارسل ( الغاء )
  ✓
@@ -11080,7 +11080,7 @@ Redis:sadd(Fast.."List:Manager:inline"..msg_chat_id.."", text)
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي الرد سواء كان 
 ❨ ملف ، ملصق ، متحركة ، صورة
- ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رساله ❩
+ ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رسالة ❩
 ↯︙يمكنك اضافة الى النص •
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
  `#username` ↬ معرف المستخدم
@@ -11280,7 +11280,7 @@ db = "بصمه •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Stekrs:inline"..v..msg_chat_id) then
 db = "ملصق •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Text:inline"..v..msg_chat_id) then
-db = "رساله •"
+db = "رسالة •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Photo:inline"..v..msg_chat_id) then
 db = "صورة •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Video:inline"..v..msg_chat_id) then
@@ -11437,7 +11437,7 @@ Redis:sadd(Fast.."List:Manager:inline3am", text)
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي الرد سواء كان 
 ❨ ملف ، ملصق ، متحركة ، صورة
- ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رساله ❩
+ ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رسالة ❩
 ↯︙يمكنك اضافة الى النص •
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
  `#username` ↬ معرف المستخدم
@@ -11576,7 +11576,7 @@ db = "بصمه •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Stekrs:inline3am"..v) then
 db = "ملصق •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Text:inline3am"..v) then
-db = "رساله •"
+db = "رسالة •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Photo:inline3am"..v) then
 db = "صورة •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Video:inline3am"..v) then
@@ -11646,7 +11646,7 @@ Redis:sadd(Fast.."List:Rd:Sudo:mz", text)
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي الرد سواء كان 
 ❨ ملف ، ملصق ، متحركة ، صورة
- ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رساله ❩
+ ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رسالة ❩
 ↯︙يمكنك اضافة الى النص •
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
  `#username` ↬ معرف المستخدم
@@ -11835,7 +11835,7 @@ db = "بصمه •"
 elseif Redis:get(Fast.."Add:Rd:Sudo:mz:stekr"..v) then
 db = "ملصق •"
 elseif Redis:get(Fast.."Add:Rd:Sudo:mz:Text"..v) then
-db = "رساله •"
+db = "رسالة •"
 elseif Redis:get(Fast.."Add:Rd:Sudo:mz:Photo"..v) then
 db = "صورة •"
 elseif Redis:get(Fast.."Add:Rd:Sudo:mz:Video"..v) then
@@ -14716,7 +14716,7 @@ Redis:setex(Fast.."Broadcasting:Users" .. msg_chat_id .. ":" .. senderr, 600, tr
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي سواء كان 
 ❨ ملف •ملصق •متحركة •صورة
- •فيديو •بصمه الفيديو •بصمه •صوت •رساله ❩
+ •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ↯︙للخروج ارسل ( الغاء )
  ✓
@@ -14730,7 +14730,7 @@ if tonumber(msg.sender_id.user_id) == tonumber(Sudo_Id) then
   send(msg_chat_id,msg_id,[[
   ↯︙ارسل لي سواء كان 
   ❨ ملف •ملصق •متحركة •صورة
-   •فيديو •بصمه الفيديو •بصمه •صوت •رساله ❩
+   •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
   ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
   ↯︙للخروج ارسل ( الغاء )
    ✓
@@ -14765,7 +14765,7 @@ Redis:setex(Fast.."Broadcasting:Groups:Pin" .. msg_chat_id .. ":" .. senderr, 60
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي سواء كان 
 ❨ ملف •ملصق •متحركة •صورة
- •فيديو •بصمه الفيديو •بصمه •صوت •رساله ❩
+ •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ↯︙للخروج ارسل ( الغاء )
  ✓
@@ -14829,7 +14829,7 @@ db = "بصمه 📢"
 elseif Redis:get(Fast.."Add:Rd:Sudo:stekr"..v) then
 db = "ملصق 🃏"
 elseif Redis:get(Fast.."Add:Rd:Sudo:Text"..v) then
-db = "رساله ✉"
+db = "رسالة ✉"
 elseif Redis:get(Fast.."Add:Rd:Sudo:Photo"..v) then
 db = "صورة 🎇"
 elseif Redis:get(Fast.."Add:Rd:Sudo:Video"..v) then
