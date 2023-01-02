@@ -2373,7 +2373,7 @@ data = {
 {text = '{ اوامر التسلية }', data = IdUser..'/helpts'},
 },
 {
-{text = '{ القائمة الرئيسيه }', data = IdUser..'/helpall'},
+{text = '{ القائمة الرئيسية }', data = IdUser..'/helpall'},
 },
 {
 {text = 'قناة البوت', url = 'http://t.me/'..chsource..''}, 
@@ -2433,7 +2433,7 @@ data = {
 {text = '{ اوامر التسلية }', data = IdUser..'/helpts'},
 },
 {
-{text = '{ القائمة الرئيسيه }', data = IdUser..'/helpall'},
+{text = '{ القائمة الرئيسية }', data = IdUser..'/helpall'},
 },
 {
 {text = 'قناة البوت', url = 'http://t.me/'..chsource..''}, 
@@ -2522,7 +2522,7 @@ data = {
 {text = '{ اوامر التسلية }', data = IdUser..'/helpts'},
 },
 {
-{text = '{ القائمة الرئيسيه }', data = IdUser..'/helpall'},
+{text = '{ القائمة الرئيسية }', data = IdUser..'/helpall'},
 },
 {
 {text = 'قناة البوت', url = 'http://t.me/'..chsource..''}, 
@@ -2607,7 +2607,7 @@ data = {
 {text = '{ اوامر التسلية }', data = IdUser..'/helpts'},
 },
 {
-{text = '{ القائمة الرئيسيه }', data = IdUser..'/helpall'},
+{text = '{ القائمة الرئيسية }', data = IdUser..'/helpall'},
 },
 {
 {text = 'قناة البوت', url = 'http://t.me/'..chsource..''}, 
@@ -2666,7 +2666,7 @@ data = {
 {text = '{ اوامر التسلية }', data = IdUser..'/helpts'},
 },
 {
-{text = '{ القائمة الرئيسيه }', data = IdUser..'/helpall'},
+{text = '{ القائمة الرئيسية }', data = IdUser..'/helpall'},
 },
 {
 {text = 'قناة البوت', url = 'http://t.me/'..chsource..''}, 
@@ -2710,7 +2710,7 @@ data = {
 {text = '{ اوامر التسلية }', data = IdUser..'/helpts'},
 },
 {
-{text = '{ القائمة الرئيسيه }', data = IdUser..'/helpall'},
+{text = '{ القائمة الرئيسية }', data = IdUser..'/helpall'},
 },
 {
 {text = 'قناة البوت', url = 'http://t.me/'..chsource..''}, 
@@ -2735,7 +2735,7 @@ local TextHelp = [[*
 • روليت » الروليت بالمعرفات 
 • الروليت » الروليت بالانضمام
 • رياضيات » مسائل رياضيه 
-• انكليزي » معاني الكلمات 
+• انجليزي » معاني الكلمات 
 • كت تويت،كت  »  اسئلة ترفيهيه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 • نقاطي ← لعرض عدد النقاط 
@@ -2766,7 +2766,7 @@ data = {
 {text = '{ اوامر التسلية }', data = IdUser..'/helpts'},
 },
 {
-{text = '{ القائمة الرئيسيه }', data = IdUser..'/helpall'},
+{text = '{ القائمة الرئيسية }', data = IdUser..'/helpall'},
 },
 {
 {text = 'قناة البوت', url = 'http://t.me/'..chsource..''}, 
@@ -4042,7 +4042,7 @@ data = {
 {text = 'تعطيل تنبيه الاسماء', data = IdUser..'/'.. 'unmute_namemy'},{text = 'تفعيل تنبيه الاسماء', data = IdUser..'/'.. 'mute_namemy'},
 },
 {
-{text = '{ القائمة الرئيسيه }', data = IdUser..'/helpall'},
+{text = '{ القائمة الرئيسية }', data = IdUser..'/helpall'},
 },
 {
 {text = '- اخفاء الامر ', data ='/delAmr'}
@@ -4102,7 +4102,7 @@ data = {
 {text = '- الرجوع ... ', data =IdUser..'/'.. 'NoNextSeting'}
 },
 {
-{text = '{ القائمة الرئيسيه }', data = IdUser..'/helpall'},
+{text = '{ القائمة الرئيسية }', data = IdUser..'/helpall'},
 },
 {
 {text = '- اخفاء الامر ', data ='/delAmr'}
@@ -4171,7 +4171,7 @@ data = {
 {text = '- التالي ... ', data =IdUser..'/'.. 'NextSeting'}
 },
 {
-{text = '{ القائمة الرئيسيه }', data = IdUser..'/helpall'},
+{text = '{ القائمة الرئيسية }', data = IdUser..'/helpall'},
 },
 {
 {text = '- اخفاء الامر ', data ='/delAmr'}
@@ -4983,7 +4983,7 @@ elseif Text and Text:match('(%d+)/Zhrfaen') then
 local UserId = Text:match('(%d+)/Zhrfaen')
 if tonumber(IdUser) == tonumber(UserId) then
 Redis:setex(Fast..":ZhrfNow:en"..UserId,500,true)
-edit(ChatId,Msg_id,"• ارسل الاسم بالانكليزي", 'md', false)
+edit(ChatId,Msg_id,"• ارسل الاسم بالانجليزي", 'md', false)
 end
 end
 if Text and Text:match('^(%d+)/back_lists$') then
