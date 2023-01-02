@@ -1516,7 +1516,7 @@ Filters = 'الصورة'
 Redis:srem(Fast.."All:List:Filter",'photo:'..msg.content.photo.sizes[1].photo.id)  
 Redis:del(Fast.."All:Filter:Group:"..msg.content.photo.sizes[1].photo.id)  
 elseif msg.content.Fastbots == "messageAnimation" then
-Filters = 'المتحركه'
+Filters = 'المتحركة'
 Redis:srem(Fast.."All:List:Filter",'animation:'..msg.content.animation.animation.id)  
 Redis:del(Fast.."All:Filter:Group:"..msg.content.animation.animation.id)  
 elseif msg.content.Fastbots == "messageSticker" then
@@ -2719,7 +2719,7 @@ Filters = 'صورة'
 Redis:sadd(Fast.."List:Filter"..msg_chat_id,'photo:'..msg.content.photo.sizes[1].photo.id)  
 Redis:set(Fast.."Filter:Text"..msg.sender_id.user_id..':'..msg_chat_id, msg.content.photo.sizes[1].photo.id)  
 elseif msg.content.animation then
-Filters = 'متحركه'
+Filters = 'متحركة'
 Redis:sadd(Fast.."List:Filter"..msg_chat_id,'animation:'..msg.content.animation.animation.id)  
 Redis:set(Fast.."Filter:Text"..msg.sender_id.user_id..':'..msg_chat_id, msg.content.animation.animation.id)  
 elseif msg.content.sticker then
@@ -2751,7 +2751,7 @@ Filters = 'الصورة'
 Redis:srem(Fast.."List:Filter"..msg_chat_id,'photo:'..msg.content.photo.sizes[1].photo.id)  
 Redis:del(Fast.."Filter:Group:"..msg.content.photo.sizes[1].photo.id..msg_chat_id)  
 elseif msg.content.animation then
-Filters = 'المتحركه'
+Filters = 'المتحركة'
 Redis:srem(Fast.."List:Filter"..msg_chat_id,'animation:'..msg.content.animation.animation.id)  
 Redis:del(Fast.."Filter:Group:"..msg.content.animation.animation.id..msg_chat_id)  
 elseif msg.content.sticker then
@@ -2773,7 +2773,7 @@ DelFilters = msg.content.photo.sizes[1].photo.id
 statusfilter = 'الصورة'
 elseif msg.content.animation then
 DelFilters = msg.content.animation.animation.id
-statusfilter = 'المتحركه'
+statusfilter = 'المتحركة'
 elseif msg.content.sticker then
 DelFilters = msg.content.sticker.sticker.id
 statusfilter = 'الملصق'
@@ -2940,7 +2940,7 @@ Redis:del(Fast.."Add:Rd:Manager:Audio"..text..msg_chat_id)
 Redis:sadd(Fast.."List:Manager"..msg_chat_id.."", text)
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي الرد سواء كان 
-❨ ملف •ملصق •متحركه •صورة
+❨ ملف •ملصق •متحركة •صورة
  •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ↯︙يمكنك اضافة الى النص •
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
@@ -3135,7 +3135,7 @@ Redis:set(Fast.."Text:Sudo:Bot"..msg.sender_id.user_id..":"..msg_chat_id, text)
 Redis:sadd(Fast.."List:Rd:Sudo", text)
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي الرد سواء كان 
-❨ ملف •ملصق •متحركه •صورة
+❨ ملف •ملصق •متحركة •صورة
  •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ↯︙يمكنك اضافة الى النص •
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
@@ -3164,7 +3164,7 @@ end
 if Redis:get(Fast.."Broadcasting:Groups:Pin" .. msg_chat_id .. ":" .. msg.sender_id.user_id) then 
 if text == "الغاء" or text == 'الغاء الامر •' then   
 Redis:del(Fast.."Broadcasting:Groups:Pin" .. msg_chat_id .. ":" .. msg.sender_id.user_id) 
-return send(msg_chat_id,msg_id, "\n• تم الغاء الاذاعه للمجموعات","md",true)  
+return send(msg_chat_id,msg_id, "\n• تم الغاء الاذاعة للمجموعات","md",true)  
 end 
 local list = Redis:smembers(Fast.."ChekBotAdd") 
 if msg.content.video_note then
@@ -3220,7 +3220,7 @@ send(v,0,text,"md",true)
 Redis:set(Fast.."PinMsegees:"..v,text)
 end
 end
-send(msg_chat_id,msg_id,"• تمت الاذاعه الى *- "..#list.." * جروب في البوت ","md",true)      
+send(msg_chat_id,msg_id,"• تمت الاذاعة الى *- "..#list.." * جروب في البوت ","md",true)      
 Redis:del(Fast.."Broadcasting:Groups:Pin" .. msg_chat_id .. ":" .. msg.sender_id.user_id) 
 return false
 end
@@ -3282,7 +3282,7 @@ end
 if Redis:get(Fast.."Broadcasting:Users" .. msg_chat_id .. ":" .. msg.sender_id.user_id) then 
 if text == "الغاء" or text == 'الغاء الامر •' then   
 Redis:del(Fast.."Broadcasting:Users" .. msg_chat_id .. ":" .. msg.sender_id.user_id) 
-return send(msg_chat_id,msg_id, "\n• تم الغاء الاذاعه خاص","md",true)  
+return send(msg_chat_id,msg_id, "\n• تم الغاء الاذاعة خاص","md",true)  
 end 
 local list = Redis:smembers(Fast..'Num:User:Pv')  
 if msg.content.video_note then
@@ -3329,7 +3329,7 @@ for k,v in pairs(list) do
 send(v,0,text,"md",true)
 end
 end
-send(msg_chat_id,msg_id,"• تمت الاذاعه الى *- "..#list.." * مشترك في البوت ","md",true)      
+send(msg_chat_id,msg_id,"• تمت الاذاعة الى *- "..#list.." * مشترك في البوت ","md",true)      
 Redis:del(Fast.."Broadcasting:Users" .. msg_chat_id .. ":" .. msg.sender_id.user_id) 
 return false
 end
@@ -3337,7 +3337,7 @@ end
 if Redis:get(Fast.."Broadcasting:Groups" .. msg_chat_id .. ":" .. msg.sender_id.user_id) then 
 if text == "الغاء" or text == 'الغاء الامر •' then   
 Redis:del(Fast.."Broadcasting:Groups" .. msg_chat_id .. ":" .. msg.sender_id.user_id) 
-return send(msg_chat_id,msg_id, "\n• تم الغاء الاذاعه للمجموعات","md",true)  
+return send(msg_chat_id,msg_id, "\n• تم الغاء الاذاعة للمجموعات","md",true)  
 end 
 local list = Redis:smembers(Fast.."ChekBotAdd") 
 if msg.content.video_note then
@@ -3384,7 +3384,7 @@ for k,v in pairs(list) do
 send(v,0,text,"md",true)
 end
 end
-send(msg_chat_id,msg_id,"• تمت الاذاعه الى *- "..#list.." * جروب في البوت ","md",true)      
+send(msg_chat_id,msg_id,"• تمت الاذاعة الى *- "..#list.." * جروب في البوت ","md",true)      
 Redis:del(Fast.."Broadcasting:Groups" .. msg_chat_id .. ":" .. msg.sender_id.user_id) 
 return false
 end
@@ -3392,7 +3392,7 @@ end
 if Redis:get(Fast.."Broadcasting:Groups:Fwd" .. msg_chat_id .. ":" .. msg.sender_id.user_id) then 
 if text == "الغاء" or text == 'الغاء الامر •' then   
 Redis:del(Fast.."Broadcasting:Groups:Fwd" .. msg_chat_id .. ":" .. msg.sender_id.user_id) 
-return send(msg_chat_id,msg_id, "\n• تم الغاء الاذاعه بالتوجيه للمجموعات","md",true)    
+return send(msg_chat_id,msg_id, "\n• تم الغاء الاذاعة بالتوجيه للمجموعات","md",true)    
 end 
 if msg.forward_info then 
 local list = Redis:smembers(Fast.."ChekBotAdd")   
@@ -3408,7 +3408,7 @@ end
 if Redis:get(Fast.."Broadcasting:Users:Fwd" .. msg_chat_id .. ":" .. msg.sender_id.user_id) then 
 if text == "الغاء" or text == 'الغاء الامر •' then   
 Redis:del(Fast.."Broadcasting:Users:Fwd" .. msg_chat_id .. ":" .. msg.sender_id.user_id) 
-return send(msg_chat_id,msg_id, "\n• تم الغاء الاذاعه بالتوجيه خاص","md",true)    
+return send(msg_chat_id,msg_id, "\n• تم الغاء الاذاعة بالتوجيه خاص","md",true)    
 end 
 if msg.forward_info then 
 local list = Redis:smembers(Fast.."Num:User:Pv")   
@@ -3777,7 +3777,7 @@ for k,v in pairs(list) do
 if v:match('photo:(.*)') then
 ver = 'صورة'
 elseif v:match('animation:(.*)') then
-ver = 'متحركه'
+ver = 'متحركة'
 elseif v:match('sticker:(.*)') then
 ver = 'ملصق'
 elseif v:match('text:(.*)') then
@@ -3805,7 +3805,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast..'All:FilterText'..msg_chat_id..':'..msg.sender_id.user_id,'true')
-return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركه ,صورة ,رسالة } *',"md",true)  
+return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رسالة } *',"md",true)  
 end    
 if text == "الغاء منع عام" then    
 if not msg.Admin then
@@ -3820,7 +3820,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast..'All:FilterText'..msg_chat_id..':'..msg.sender_id.user_id,'DelFilterq')
-return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركه ,صورة ,رسالة } *',"md",true)  
+return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رسالة } *',"md",true)  
 end
 if (Redis:get(Fast..'All:FilterText'..msg_chat_id..':'..msg.sender_id.user_id) == 'true') then
 if text or msg.content.photo or msg.content.animation or msg.content.sticker then
@@ -3829,7 +3829,7 @@ Filters = 'صورة'
 Redis:sadd(Fast.."All:List:Filter",'photo:'..msg.content.photo.sizes[1].photo.id)  
 Redis:set(Fast.."All:Filter:Text"..msg.sender_id.user_id..':'..msg_chat_id, msg.content.photo.sizes[1].photo.id)  
 elseif msg.content.animation then
-Filters = 'متحركه'
+Filters = 'متحركة'
 Redis:sadd(Fast.."All:List:Filter",'animation:'..msg.content.animation.animation.id)  
 Redis:set(Fast.."All:Filter:Text"..msg.sender_id.user_id..':'..msg_chat_id, msg.content.animation.animation.id)  
 elseif msg.content.sticker then
@@ -3861,7 +3861,7 @@ DelFilters = msg.content.photo.sizes[1].photo.id
 statusfilter = 'الصورة'
 elseif msg.content.animation then
 DelFilters = msg.content.animation.animation.id
-statusfilter = 'المتحركه'
+statusfilter = 'المتحركة'
 elseif msg.content.sticker then
 DelFilters = msg.content.sticker.sticker.id
 statusfilter = 'الملصق'
@@ -4294,7 +4294,7 @@ send(msg_chat_id,msg_id,'- لا توجد جروب في البوت بهذا ال�
 return false
 end
 send(Chatid,0,Message_Reply.content.text.text)
-send(msg_chat_id,msg_id,'- تم الاذاعه الى  : '..Get_Chat.title..'\n ')
+send(msg_chat_id,msg_id,'- تم الاذاعة الى  : '..Get_Chat.title..'\n ')
 end 
 
 
@@ -5995,7 +5995,7 @@ send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم فتح الفارسيه")
 return false
 end 
 
-if text == "قفل الدردشه" then 
+if text == "قفل الدردشة" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -6008,7 +6008,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Lock:text"..msg_chat_id,true) 
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل الدردشه").Lock,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل الدردشة").Lock,"md",true)  
 return false
 end 
 if text == "قفل الاضافه" then 
@@ -6324,7 +6324,7 @@ Redis:del(Fast.."Lock:AddMempar"..msg_chat_id)
 send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم فتح اضافة الاعضاء").unLock,"md",true)  
 return false
 end 
-if text == "فتح الدردشه" then 
+if text == "فتح الدردشة" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -6337,7 +6337,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end 
 Redis:del(Fast.."Lock:text"..msg_chat_id)  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم فتح الدردشه").unLock,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم فتح الدردشة").unLock,"md",true)  
 return false
 end 
 if text == "فتح الدخول" then 
@@ -7024,7 +7024,7 @@ Redis:del(Fast.."Lock:Video"..msg_chat_id)
 send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم فتح الفيديو").unLock,"md",true)  
 return false
 end 
-if text == "قفل المتحركه" then 
+if text == "قفل المتحركة" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -7037,10 +7037,10 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Lock:Animation"..msg_chat_id,"del")  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المتحركه").Lock,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المتحركة").Lock,"md",true)  
 return false
 end 
-if text == "قفل المتحركه بالتقييد" then 
+if text == "قفل المتحركة بالتقييد" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -7053,10 +7053,10 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Lock:Animation"..msg_chat_id,"ked")  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المتحركه").lockKid,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المتحركة").lockKid,"md",true)  
 return false
 end 
-if text == "قفل المتحركه بالكتم" then 
+if text == "قفل المتحركة بالكتم" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -7069,10 +7069,10 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Lock:Animation"..msg_chat_id,"ktm")  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المتحركه").lockKtm,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المتحركة").lockKtm,"md",true)  
 return false
 end 
-if text == "قفل المتحركه بالطرد" then 
+if text == "قفل المتحركة بالطرد" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -7085,10 +7085,10 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Lock:Animation"..msg_chat_id,"kick")  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المتحركه").lockKick,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المتحركة").lockKick,"md",true)  
 return false
 end 
-if text == "فتح المتحركه" then 
+if text == "فتح المتحركة" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -7101,7 +7101,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(Fast.."Lock:Animation"..msg_chat_id)  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم فتح المتحركه").unLock,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم فتح المتحركة").unLock,"md",true)  
 return false
 end 
 if text == "قفل الالعاب" then 
@@ -8434,7 +8434,7 @@ for k,v in pairs(list) do
 if v:match('photo:(.*)') then
 ver = 'صورة'
 elseif v:match('animation:(.*)') then
-ver = 'متحركه'
+ver = 'متحركة'
 elseif v:match('sticker:(.*)') then
 ver = 'ملصق'
 elseif v:match('text:(.*)') then
@@ -8462,7 +8462,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast..'FilterText'..msg_chat_id..':'..senderr,'true')
-return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركه ,صورة ,رسالة } *',"md",true)  
+return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رسالة } *',"md",true)  
 end    
 if text == "الغاء منع" then    
 if not msg.Admin then
@@ -8477,7 +8477,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast..'FilterText'..msg_chat_id..':'..senderr,'DelFilter')
-return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركه ,صورة ,رسالة } *',"md",true)  
+return send(msg_chat_id,msg_id,'\n*• ارسل الان { ملصق ,متحركة ,صورة ,رسالة } *',"md",true)  
 end
 
 if text == "اضف امر" then
@@ -8816,13 +8816,13 @@ data = {
 {text = GetSetieng(msg_chat_id).lock_vico, data = '&'},{text = 'الاغاني : ', data =senderr..'/'.. 'Status_voice'},
 },
 {
-{text = GetSetieng(msg_chat_id).lock_gif, data = '&'},{text = 'المتحركه : ', data =senderr..'/'.. 'Status_gif'},
+{text = GetSetieng(msg_chat_id).lock_gif, data = '&'},{text = 'المتحركة : ', data =senderr..'/'.. 'Status_gif'},
 },
 {
 {text = GetSetieng(msg_chat_id).lock_file, data = '&'},{text = 'الملفات : ', data =senderr..'/'.. 'Status_files'},
 },
 {
-{text = GetSetieng(msg_chat_id).lock_text, data = '&'},{text = 'الدردشه : ', data =senderr..'/'.. 'Status_text'},
+{text = GetSetieng(msg_chat_id).lock_text, data = '&'},{text = 'الدردشة : ', data =senderr..'/'.. 'Status_text'},
 },
 {
 {text = GetSetieng(msg_chat_id).lock_ved, data = '&'},{text = 'الفيديو : ', data =senderr..'/'.. 'Status_video'},
@@ -10372,7 +10372,7 @@ local list = Redis:smembers(Fast.."List:Manager"..msg_chat_id.."")
 text = "• قائمه الردود \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 if Redis:get(Fast.."Add:Rd:Manager:Gif"..v..msg_chat_id) then
-db = "متحركه 🎭"
+db = "متحركة 🎭"
 elseif Redis:get(Fast.."Add:Rd:Manager:Vico"..v..msg_chat_id) then
 db = "بصمه 📢"
 elseif Redis:get(Fast.."Add:Rd:Manager:Stekrs"..v..msg_chat_id) then
@@ -10486,7 +10486,7 @@ local list = Redis:smembers(Fast.."List:Rd:Sudo")
 text = "\n📝︙قائمة الردود العامة \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 if Redis:get(Fast.."Add:Rd:Sudo:Gif"..v) then
-db = "متحركه 🎭"
+db = "متحركة 🎭"
 elseif Redis:get(Fast.."Add:Rd:Sudo:vico"..v) then
 db = "بصمه 📢"
 elseif Redis:get(Fast.."Add:Rd:Sudo:stekr"..v) then
@@ -10557,7 +10557,7 @@ data = {
 }
 return send(msg_chat_id,msg_id,"• ارسل الان الكلمه لمسحها من الردود العامة", 'md', false, false, false, false, reply_markup)
 end
-if text=="اذاعه خاص" then 
+if text=="اذاعة خاص" then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -10572,7 +10572,7 @@ end
 Redis:setex(Fast.."Broadcasting:Users" .. msg_chat_id .. ":" .. senderr, 600, true) 
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي سواء كان 
-❨ ملف •ملصق •متحركه •صورة
+❨ ملف •ملصق •متحركة •صورة
  •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ↯︙للخروج ارسل ( الغاء )
@@ -10581,7 +10581,7 @@ send(msg_chat_id,msg_id,[[
 return false
 end
 
-if text=="اذاعه" then 
+if text=="اذاعة" then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -10596,7 +10596,7 @@ end
 Redis:setex(Fast.."Broadcasting:Groups" .. msg_chat_id .. ":" .. senderr, 600, true) 
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي سواء كان 
-❨ ملف •ملصق •متحركه •صورة
+❨ ملف •ملصق •متحركة •صورة
  •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ↯︙للخروج ارسل ( الغاء )
@@ -10605,7 +10605,7 @@ send(msg_chat_id,msg_id,[[
 return false
 end
 
-if text=="اذاعه بالتثبيت" then 
+if text=="اذاعة بالتثبيت" then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -10620,7 +10620,7 @@ end
 Redis:setex(Fast.."Broadcasting:Groups:Pin" .. msg_chat_id .. ":" .. senderr, 600, true) 
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي سواء كان 
-❨ ملف •ملصق •متحركه •صورة
+❨ ملف •ملصق •متحركة •صورة
  •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ↯︙للخروج ارسل ( الغاء )
@@ -10629,7 +10629,7 @@ send(msg_chat_id,msg_id,[[
 return false
 end
 
-if text=="اذاعه بالتوجيه" then 
+if text=="اذاعة بالتوجيه" then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -10646,7 +10646,7 @@ send(msg_chat_id,msg_id,"• ارسل لي التوجيه الان\n• ليتم
 return false
 end
 
-if text=="اذاعه خاص بالتوجيه" then 
+if text=="اذاعة خاص بالتوجيه" then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -11304,7 +11304,7 @@ Redis:del(Fast.."Rd:Manager:inline:link"..text..msg_chat_id)
 Redis:sadd(Fast.."List:Manager:inline"..msg_chat_id.."", text)
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي الرد سواء كان 
-❨ ملف ، ملصق ، متحركه ، صورة
+❨ ملف ، ملصق ، متحركة ، صورة
  ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رسالة ❩
 ↯︙يمكنك اضافة الى النص •
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
@@ -11499,7 +11499,7 @@ local list = Redis:smembers(Fast.."List:Manager:inline"..msg_chat_id.."")
 text = "• قائمه الردود الانلاين \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 if Redis:get(Fast.."Add:Rd:Manager:Gif:inline"..v..msg_chat_id) then
-db = "متحركه •"
+db = "متحركة •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Vico:inline"..v..msg_chat_id) then
 db = "بصمه •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Stekrs:inline"..v..msg_chat_id) then
@@ -11661,7 +11661,7 @@ Redis:del(Fast.."Rd:Manager:inline3am:link"..text)
 Redis:sadd(Fast.."List:Manager:inline3am", text)
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي الرد سواء كان 
-❨ ملف ، ملصق ، متحركه ، صورة
+❨ ملف ، ملصق ، متحركة ، صورة
  ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رسالة ❩
 ↯︙يمكنك اضافة الى النص •
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
@@ -11795,7 +11795,7 @@ local list = Redis:smembers(Fast.."List:Manager:inline3am")
 text = "• قائمه الردود الانلاين \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 if Redis:get(Fast.."Add:Rd:Manager:Gif:inline3am"..v) then
-db = "متحركه •"
+db = "متحركة •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Vico:inline3am"..v) then
 db = "بصمه •"
 elseif Redis:get(Fast.."Add:Rd:Manager:Stekrs:inline3am"..v) then
@@ -11870,7 +11870,7 @@ Redis:set(Fast.."Text:Sudo:Bot"..senderr..":"..msg_chat_id, text)
 Redis:sadd(Fast.."List:Rd:Sudo:mz", text)
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي الرد سواء كان 
-❨ ملف ، ملصق ، متحركه ، صورة
+❨ ملف ، ملصق ، متحركة ، صورة
  ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رسالة ❩
 ↯︙يمكنك اضافة الى النص •
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
@@ -12054,7 +12054,7 @@ local list = Redis:smembers(Fast.."List:Rd:Sudo:mz")
 text = "\n• قائمة الردود المميزه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 if Redis:get(Fast.."Add:Rd:Sudo:mz:Gif"..v) then
-db = "متحركه •"
+db = "متحركة •"
 elseif Redis:get(Fast.."Add:Rd:Sudo:mz:vico"..v) then
 db = "بصمه •"
 elseif Redis:get(Fast.."Add:Rd:Sudo:mz:stekr"..v) then
@@ -13191,25 +13191,25 @@ Redis:del(Fast.."brjj"..msg.chat_id)
 send(msg_chat_id,msg_id, '• تم تفعيل امر الابراج\n ✓',"md")
 end
 end
-if text == "تفعيل متحركه" then
+if text == "تفعيل متحركة" then
 if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
 end
-local F333F = ' \n• تم تفعيل المتحركه'
+local F333F = ' \n• تم تفعيل المتحركة'
 send(msg_chat_id,msg_id,F333F,"md")
 Redis:del(Fast..'Abs:gif:Abs'..msg.chat_id) 
 end
-if text == "تعطيل متحركه" then
+if text == "تعطيل متحركة" then
 if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
 end
-local F333F = ' \n• تم تعطيل المتحركه'
+local F333F = ' \n• تم تعطيل المتحركة'
 send(msg_chat_id,msg_id,F333F,"md")
 Redis:set(Fast..'Abs:gif:Abs'..msg.chat_id,true)  
 end
-if text and (text == "متحركه" or text == "↫ متحركه ✯") and not Redis:get(Fast..'Abs:gif:Abs'..msg.chat_id) then
+if text and (text == "متحركة" or text == "↫ متحركة ✯") and not Redis:get(Fast..'Abs:gif:Abs'..msg.chat_id) then
 Abs = math.random(2,1075); 
-local Text ='*• تم اختيار المتحركه لك*'
+local Text ='*• تم اختيار المتحركة لك*'
 local msg_id = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token..'/sendanimation?chat_id=' .. msg.chat_id .. '&animation=https://t.me/GifWaTaN/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown") 
 end
@@ -14573,13 +14573,13 @@ data = {
 {text = 'تفعيل البوت الخدمي •',type = 'text'},{text = 'تعطيل البوت الخدمي •', type = 'text'},
 },
 {
-{text = 'اذاعه للمجموعات •',type = 'text'},{text = 'اذاعه خاص •', type = 'text'},
+{text = 'اذاعة للمجموعات •',type = 'text'},{text = 'اذاعة خاص •', type = 'text'},
 },
 {
-{text = 'اذاعه بالتوجيه •',type = 'text'},{text = 'اذاعه بالتوجيه خاص •', type = 'text'},
+{text = 'اذاعة بالتوجيه •',type = 'text'},{text = 'اذاعة بالتوجيه خاص •', type = 'text'},
 },
 {
-{text = 'اذاعه بالتثبيت •',type = 'text'},
+{text = 'اذاعة بالتثبيت •',type = 'text'},
 },
 {
 {text = 'المطورين الثانويين •',type = 'text'},{text = 'المطورين •',type = 'text'},{text = 'قائمه العام •', type = 'text'},
@@ -14925,7 +14925,7 @@ end
 Redis:set(Fast.."Set:On"..senderr..":"..msg_chat_id,true)
 return send(msg_chat_id,msg_id,"• ارسل الان الكلمه لمسحها من الردود العامة","md",true)  
 end
-if text=='اذاعه خاص •' then 
+if text=='اذاعة خاص •' then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -14940,7 +14940,7 @@ end
 Redis:setex(Fast.."Broadcasting:Users" .. msg_chat_id .. ":" .. senderr, 600, true) 
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي سواء كان 
-❨ ملف •ملصق •متحركه •صورة
+❨ ملف •ملصق •متحركة •صورة
  •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ↯︙للخروج ارسل ( الغاء )
@@ -14949,12 +14949,12 @@ send(msg_chat_id,msg_id,[[
 return false
 end
 
-if text=='اذاعه للمجموعات •' then 
+if text=='اذاعة للمجموعات •' then 
 if tonumber(msg.sender_id.user_id) == tonumber(Sudo_Id) then 
   Redis:setex(Fast.."Broadcasting:Groups" .. msg_chat_id .. ":" .. senderr, 600, true) 
   send(msg_chat_id,msg_id,[[
   ↯︙ارسل لي سواء كان 
-  ❨ ملف •ملصق •متحركه •صورة
+  ❨ ملف •ملصق •متحركة •صورة
    •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
   ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
   ↯︙للخروج ارسل ( الغاء )
@@ -14974,7 +14974,7 @@ return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة �
 end
 end
 
-if text=="اذاعه بالتثبيت •" then 
+if text=="اذاعة بالتثبيت •" then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -14989,7 +14989,7 @@ end
 Redis:setex(Fast.."Broadcasting:Groups:Pin" .. msg_chat_id .. ":" .. senderr, 600, true) 
 send(msg_chat_id,msg_id,[[
 ↯︙ارسل لي سواء كان 
-❨ ملف •ملصق •متحركه •صورة
+❨ ملف •ملصق •متحركة •صورة
  •فيديو •بصمه الفيديو •بصمه •صوت •رسالة ❩
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ↯︙للخروج ارسل ( الغاء )
@@ -14998,7 +14998,7 @@ send(msg_chat_id,msg_id,[[
 return false
 end
 
-if text=="اذاعه بالتوجيه •" then 
+if text=="اذاعة بالتوجيه •" then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -15015,7 +15015,7 @@ send(msg_chat_id,msg_id,"• ارسل لي التوجيه الان\n• ليتم
 return false
 end
 
-if text=='اذاعه بالتوجيه خاص •' then 
+if text=='اذاعة بالتوجيه خاص •' then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -15048,7 +15048,7 @@ local list = Redis:smembers(Fast.."List:Rd:Sudo")
 text = "\n📝︙قائمة الردود العامة \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 if Redis:get(Fast.."Add:Rd:Sudo:Gif"..v) then
-db = "متحركه 🎭"
+db = "متحركة 🎭"
 elseif Redis:get(Fast.."Add:Rd:Sudo:vico"..v) then
 db = "بصمه 📢"
 elseif Redis:get(Fast.."Add:Rd:Sudo:stekr"..v) then
