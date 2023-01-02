@@ -1644,7 +1644,7 @@ bot.deleteMessages(msg.chat_id,{[1]= msg.id})
 if Redis:get(Fast..'AlThther:Chat'..msg.chat_id)  then
 local UserInfo = bot.getUser(msg.sender_id.user_id)
 local Teext = '• المستخدم : ['..FlterBio(UserInfo.first_name)..'](tg://user?id='..msg.sender_id.user_id..')\n'
-return send(msg_chat_id,msg_id,Teext..'• ممنوع ارسال الكلايش \n ✓',"md")
+return send(msg_chat_id,msg_id,Teext..'• ممنوع ارسال المنشورات \n ✓',"md")
 end
 elseif Redis:get(Fast.."Lock:Spam"..msg.chat_id) == "ked" and string.len(text) > (sens) or ctrl_ > (sens) or real_ > (sens) then 
 bot.setChatMemberStatus(msg.chat_id,msg.sender_id.user_id,'restricted',{1,0,0,0,0,0,0,0,0})
@@ -1652,7 +1652,7 @@ bot.deleteMessages(msg.chat_id,{[1]= msg.id})
 if Redis:get(Fast..'AlThther:Chat'..msg.chat_id)  then
 local UserInfo = bot.getUser(msg.sender_id.user_id)
 local Teext = '• المستخدم : ['..FlterBio(UserInfo.first_name)..'](tg://user?id='..msg.sender_id.user_id..')\n'
-return send(msg_chat_id,msg_id,Teext..'• ممنوع ارسال الكلايش \n ✓',"md")
+return send(msg_chat_id,msg_id,Teext..'• ممنوع ارسال المنشورات \n ✓',"md")
 end
 elseif Redis:get(Fast.."Lock:Spam"..msg.chat_id) == "kick" and string.len(text) > (sens) or ctrl_ > (sens) or real_ > (sens) then 
 bot.setChatMemberStatus(msg.chat_id,msg.sender_id.user_id,'banned',0)
@@ -1660,7 +1660,7 @@ bot.deleteMessages(msg.chat_id,{[1]= msg.id})
 if Redis:get(Fast..'AlThther:Chat'..msg.chat_id)  then
 local UserInfo = bot.getUser(msg.sender_id.user_id)
 local Teext = '• المستخدم : ['..FlterBio(UserInfo.first_name)..'](tg://user?id='..msg.sender_id.user_id..')\n'
-return send(msg_chat_id,msg_id,Teext..'• ممنوع ارسال الكلايش \n ✓',"md")
+return send(msg_chat_id,msg_id,Teext..'• ممنوع ارسال المنشورات \n ✓',"md")
 end
 elseif Redis:get(Fast.."Lock:Spam"..msg.chat_id) == "ktm" and string.len(text) > (sens) or ctrl_ > (sens) or real_ > (sens) then 
 Redis:sadd(Fast.."SilentGroup:Group"..msg.chat_id,tonumber(msg.sender_id.user_id))
@@ -1668,7 +1668,7 @@ bot.deleteMessages(msg.chat_id,{[1]= msg.id})
 if Redis:get(Fast..'AlThther:Chat'..msg.chat_id)  then
 local UserInfo = bot.getUser(msg.sender_id.user_id)
 local Teext = '• المستخدم : ['..FlterBio(UserInfo.first_name)..'](tg://user?id='..msg.sender_id.user_id..')\n'
-return send(msg_chat_id,msg_id,Teext..'• ممنوع ارسال الكلايش \n ✓',"md")
+return send(msg_chat_id,msg_id,Teext..'• ممنوع ارسال المنشورات \n ✓',"md")
 end
 end
 end
@@ -3158,7 +3158,7 @@ Redis:del(Fast..''..v..text)
 end
 Redis:del(Fast.."Set:On"..msg.sender_id.user_id..":"..msg_chat_id)
 Redis:srem(Fast.."List:Rd:Sudo", text)
-return send(msg_chat_id,msg_id,"• تم مسح الرد من الردود العامه","md",true)  
+return send(msg_chat_id,msg_id,"• تم مسح الرد من الردود العامة","md",true)  
 end
 end
 if Redis:get(Fast.."Broadcasting:Groups:Pin" .. msg_chat_id .. ":" .. msg.sender_id.user_id) then 
@@ -3423,11 +3423,11 @@ end
 if text and Redis:get(Fast..'GetTexting:DevFast'..msg_chat_id..':'..msg.sender_id.user_id) then
 if text == 'الغاء' or text == 'الغاء الامر •' then 
 Redis:del(Fast..'GetTexting:DevFast'..msg_chat_id..':'..msg.sender_id.user_id)
-return send(msg_chat_id,msg_id,'• تم الغاء حفظ كليشة المطور')
+return send(msg_chat_id,msg_id,'• تم الغاء حفظ رسالة المطور')
 end
 Redis:set(Fast..'Texting:DevFast',text)
 Redis:del(Fast..'GetTexting:DevFast'..msg_chat_id..':'..msg.sender_id.user_id)
-return send(msg_chat_id,msg_id,'• تم حفظ كليشة المطور')
+return send(msg_chat_id,msg_id,'• تم حفظ رسالة المطور')
 end
 if Redis:get(Fast.."Redis:Id:Group"..msg.chat_id..""..msg.sender_id.user_id) then 
 if text == 'الغاء' then 
@@ -3461,11 +3461,11 @@ end
 if Redis:get(Fast.."Change:Start:Bot"..msg.sender_id.user_id) then 
 if text == "الغاء" or text == 'الغاء الامر •' then   
 Redis:del(Fast.."Change:Start:Bot"..msg.sender_id.user_id) 
-return send(msg_chat_id,msg_id, "\n• تم الغاء امر تغير كليشه start","md",true)  
+return send(msg_chat_id,msg_id, "\n• تم الغاء امر تغير رسالة start","md",true)  
 end 
 Redis:del(Fast.."Change:Start:Bot"..msg.sender_id.user_id) 
 Redis:set(Fast.."Start:Bot",text) 
-return send(msg_chat_id,msg_id, "• تم تغيير كليشه start - "..text,"md",true)    
+return send(msg_chat_id,msg_id, "• تم تغيير رسالة start - "..text,"md",true)    
 end 
 
 -------*****************-------*****************-------*****************
@@ -3512,7 +3512,7 @@ end
 end
 if Redis:get(Fast.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id) == 'startdel' then
 if not Redis:sismember(Fast.."All:text:Games:Bot",text) then
-send(msg_chat_id,msg_id,'• لا يوجد صوتيه بهذا الاسم في العامه')
+send(msg_chat_id,msg_id,'• لا يوجد صوتيه بهذا الاسم في العامة')
 Redis:del(Fast.."All:Add:audio:Games"..msg.sender_id.user_id..":"..msg.chat_id)
 return false
 end
@@ -4558,7 +4558,7 @@ local TestText = "- معلومات مطور السورس : \n\n- ["..FlterBio(Us
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
-{text = 'قناه السورس', url='http://t.me/'..chsource..''},
+{text = 'قناة السورس', url='http://t.me/'..chsource..''},
 },
 }
 local msg_id = msg.id/2097152/0.5 
@@ -4568,7 +4568,7 @@ local TestText = "- معلومات مطور السورس : \\nn- ["..FlterBio(Us
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
-{text = 'قناه السورس', url='http://t.me/'..chsource..''},
+{text = 'قناة السورس', url='http://t.me/'..chsource..''},
 },
 }
 local msg_id = msg.id/2097152/0.5 
@@ -5757,7 +5757,7 @@ end
 send(msg_chat_id,msg_id,listall,"md",true)  
 end
 
-if text == "قفل ارسال القناة" or text == "قفل القناه" then 
+if text == "قفل ارسال القناة" or text == "قفل القناة" then 
 if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
 end
@@ -5773,7 +5773,7 @@ Redis:set(Fast.."Lock:SenderChat"..msg_chat_id,true)
 send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل ارسال القناة").Lock,"md",true)  
 return false
 end 
-if text == "فتح ارسال القناة" or text == "فتح القناه" then 
+if text == "فتح ارسال القناة" or text == "فتح القناة" then 
 if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
 end
@@ -7904,7 +7904,7 @@ Redis:del(Fast.."Lock:Contact"..msg_chat_id)
 send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم فتح الجهات").unLock,"md",true)  
 return false
 end 
-if text == "قفل الكلايش" then 
+if text == "قفل المنشورات" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -7917,10 +7917,10 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Lock:Spam"..msg_chat_id,"del")  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل الكلايش").Lock,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المنشورات").Lock,"md",true)  
 return false
 end 
-if text == "قفل الكلايش بالتقييد" then 
+if text == "قفل المنشورات بالتقييد" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -7933,10 +7933,10 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Lock:Spam"..msg_chat_id,"ked")  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل الكلايش").lockKid,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المنشورات").lockKid,"md",true)  
 return false
 end 
-if text == "قفل الكلايش بالكتم" then 
+if text == "قفل المنشورات بالكتم" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -7949,10 +7949,10 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Lock:Spam"..msg_chat_id,"ktm")  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل الكلايش").lockKtm,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المنشورات").lockKtm,"md",true)  
 return false
 end 
-if text == "قفل الكلايش بالطرد" then 
+if text == "قفل المنشورات بالطرد" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -7965,10 +7965,10 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Lock:Spam"..msg_chat_id,"kick")  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل الكلايش").lockKick,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم قفـل المنشورات").lockKick,"md",true)  
 return false
 end 
-if text == "فتح الكلايش" then 
+if text == "فتح المنشورات" then 
 if not msg.Admin then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -7981,7 +7981,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(Fast.."Lock:Spam"..msg_chat_id)  
-send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم فتح الكلايش").unLock,"md",true)  
+send(msg_chat_id,msg_id,Reply_Status(senderr,"• تم فتح المنشورات").unLock,"md",true)  
 return false
 end 
 if text == "قفل الانلاين" then 
@@ -8673,7 +8673,7 @@ data = {
 {text = 'تعطيل الردود', data = senderr..'/'.. 'unmute_ryple'},{text = 'تفعيل الردود', data = senderr..'/'.. 'mute_ryple'},
 },
 {
-{text = 'تعطيل الردود العامه', data = senderr..'/'.. 'unmute_ryplesudo'},{text = 'تفعيل الردود العامه', data = senderr..'/'.. 'mute_ryplesudo'},
+{text = 'تعطيل الردود العامة', data = senderr..'/'.. 'unmute_ryplesudo'},{text = 'تفعيل الردود العامة', data = senderr..'/'.. 'mute_ryplesudo'},
 },
 {
 {text = 'تعطيل الرفع', data = senderr..'/'.. 'unmute_setadmib'},{text = 'تفعيل الرفع', data = senderr..'/'.. 'mute_setadmib'},
@@ -8706,7 +8706,7 @@ data = {
 {text = 'تعطيل الصوتيات', data = senderr..'/'.. 'unmute_audio'},{text = 'تفعيل الصوتيات', data = senderr..'/'.. 'mute_audio'},
 },
 {
-{text = 'تعطيل الصوتيات العامه', data = senderr..'/'.. 'unmute_audioall'},{text = 'تفعيل الصوتيات العامه', data = senderr..'/'.. 'mute_audioall'},
+{text = 'تعطيل الصوتيات العامة', data = senderr..'/'.. 'unmute_audioall'},{text = 'تفعيل الصوتيات العامة', data = senderr..'/'.. 'mute_audioall'},
 },
 {
 {text = 'تعطيل تاك عام', data = senderr..'/'.. 'unmute_takall'},{text = 'تفعيل تاك عام', data = senderr..'/'.. 'mute_takall'},
@@ -8772,7 +8772,7 @@ local protectionGroup = '\n*• اعدادات حمايه الجروب\n ┉ ┉
 ..'\n• الايدي ➤ '..StatusId
 ..'\n• الايدي بالصورة ➤ '..StatusIdPhoto
 ..'\n• الردود ➤ '..StatusReply
-..'\n• الردود العامه ➤ '..StatusReplySudo
+..'\n• الردود العامة ➤ '..StatusReplySudo
 ..'\n• الرفع ➤ '..StatusSetId
 ..'\n• الحظر - الطرد ➤ '..StatusBanId
 ..'\n• الالعاب ➤ '..StatusGames
@@ -8781,7 +8781,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = 'قناه السورس', url = 'http://t.me/'..chsource..''}, 
+{text = 'قناة السورس', url = 'http://t.me/'..chsource..''}, 
 },
 }
 }
@@ -8807,7 +8807,7 @@ data = {
 {text = GetSetieng(msg_chat_id).lock_links, data = '&'},{text = 'الروابط : ', data =senderr..'/'.. 'Status_link'},
 },
 {
-{text = GetSetieng(msg_chat_id).lock_spam, data = '&'},{text = 'الكلايش : ', data =senderr..'/'.. 'Status_spam'},
+{text = GetSetieng(msg_chat_id).lock_spam, data = '&'},{text = 'المنشورات : ', data =senderr..'/'.. 'Status_spam'},
 },
 {
 {text = GetSetieng(msg_chat_id).lock_inlin, data = '&'},{text = 'الكيبورد : ', data =senderr..'/'.. 'Status_keypord'},
@@ -9723,7 +9723,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(Fast.."Set:Id:Group"..msg.chat_id)
-return send(msg_chat_id,msg_id, '• تم ازالة كليشة الايدي ',"md",true)  
+return send(msg_chat_id,msg_id, '• تم ازالة رسالة الايدي ',"md",true)  
 end
 if text == 'تغيير الايدي' or text == 'تغير الايدي' then
 if not msg.Creator then
@@ -9860,7 +9860,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(Fast.."Set:Id:Groups")
-return send(msg_chat_id,msg_id, '• تم ازالة كليشة الايدي ',"md",true)  
+return send(msg_chat_id,msg_id, '• تم ازالة رسالة الايدي ',"md",true)  
 end
 if text == 'تعيين الايدي عام' then
 if not msg.Asasy then 
@@ -10443,7 +10443,7 @@ data = {
 }
 return send(msg_chat_id,msg_id,"• ارسل الان اسم الرد لمسحه من الردود", 'md', false, false, false, false, reply_markup)
 end
-if text == ("مسح الردود العامه") then 
+if text == ("مسح الردود العامة") then 
 if not msg.Devss then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
 end
@@ -10468,9 +10468,9 @@ Redis:del(Fast.."Add:Rd:Sudo:Audio"..v)
 Redis:del(Fast.."Add:Rd:Sudo:video_note"..v)
 Redis:del(Fast.."List:Rd:Sudo")
 end
-return send(msg_chat_id,msg_id,"• تم مسح الردود العامه","md",true)  
+return send(msg_chat_id,msg_id,"• تم مسح الردود العامة","md",true)  
 end
-if text == ("الردود العامه") then 
+if text == ("الردود العامة") then 
 if not msg.Devss then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(2)..' }* ',"md",true)  
 end
@@ -10483,7 +10483,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local list = Redis:smembers(Fast.."List:Rd:Sudo")
-text = "\n📝︙قائمة الردود العامه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "\n📝︙قائمة الردود العامة \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 if Redis:get(Fast.."Add:Rd:Sudo:Gif"..v) then
 db = "متحركه 🎭"
@@ -10532,7 +10532,7 @@ data = {
 },
 }
 }
-return send(msg_chat_id,msg_id,"• ارسل الان اسم الرد لاضافته في الردود العامه ", 'md', false, false, false, false, reply_markup)
+return send(msg_chat_id,msg_id,"• ارسل الان اسم الرد لاضافته في الردود العامة ", 'md', false, false, false, false, reply_markup)
 end
 if text == "مسح رد عام" then 
 if not msg.Devss then 
@@ -10555,7 +10555,7 @@ data = {
 },
 }
 }
-return send(msg_chat_id,msg_id,"• ارسل الان الكلمه لمسحها من الردود العامه", 'md', false, false, false, false, reply_markup)
+return send(msg_chat_id,msg_id,"• ارسل الان الكلمه لمسحها من الردود العامة", 'md', false, false, false, false, reply_markup)
 end
 if text=="اذاعه خاص" then 
 if not msg.Asasy then 
@@ -10865,7 +10865,7 @@ bot.setChatMemberStatus(msg.chat_id,UserId_Info.id,'restricted',{1,1,1,1,1,1,1,1
 send(msg_chat_id,msg_id,"\n*• تم رفع القيود عنه : {"..BanAll..BanGroup..SilentGroup..Restricted..'}*',"md",true)  
 end
 
-if text == 'ضع كليشه المطور' then
+if text == 'ضع رسالة المطور' then
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -10878,9 +10878,9 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast..'GetTexting:DevFast'..msg_chat_id..':'..senderr,true)
-return send(msg_chat_id,msg_id,'• ارسل لي الكليشه الان')
+return send(msg_chat_id,msg_id,'• ارسل لي الرسالة الان')
 end
-if text == 'مسح كليشة المطور' then
+if text == 'مسح رسالة المطور' then
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -10893,7 +10893,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(Fast..'Texting:DevFast')
-return send(msg_chat_id,msg_id,'• تم مسح كليشه المطور')
+return send(msg_chat_id,msg_id,'• تم مسح رسالة المطور')
 end
 ---استبدال كلمه--
 if text == "استبدال كلمه" then
@@ -11116,12 +11116,12 @@ send(msg_chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"↞ابشر عطلت
 end
 
 --- سي في 
-if text == "مسح كليشه سي في" then 
+if text == "مسح رسالة سي في" then 
 if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
 end
 Redis:del(Fast..":CV:Text:"..msg.chat_id)
-return send(msg_chat_id,msg_id,'\n⌯ تم مسح كليشه السي في',"md",true)  
+return send(msg_chat_id,msg_id,'\n⌯ تم مسح رسالة السي في',"md",true)  
 end
 
 if text == "مسح سي في" then 
@@ -11221,7 +11221,7 @@ local CV_Text = CV_Text:gsub('#Address',address)
 return send(msg_chat_id,msg_id,CV_Text,"md",true)  
 end
 
-if text == "ضع كليشه سي في" then
+if text == "ضع رسالة سي في" then
 if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*⌯ هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
 end
@@ -11232,7 +11232,7 @@ end
 if text and Redis:get(Fast..":CV:set:"..msg.sender_id.user_id..":"..msg.chat_id) == "Text" then
 Redis:set(Fast..":CV:Text:"..msg.chat_id, text)
 Redis:del(Fast..":CV:set:"..msg.sender_id.user_id..":"..msg.chat_id)
-return send(msg_chat_id,msg_id,"⌯ تم وضع كليشه السي في","md",true)  
+return send(msg_chat_id,msg_id,"⌯ تم وضع رسالة السي في","md",true)  
 end
 ---
 
@@ -11525,7 +11525,7 @@ end
 return send(msg_chat_id,msg_id,"["..text.."]","md",true)
 end
 ---------
-if text == ("مسح الردود الانلاين العامه") then
+if text == ("مسح الردود الانلاين العامة") then
 if not msg.Devss then
 return send(msg_chat_id,msg_id,'\n*• هاذا الامر يخص المطور الثانوي * ',"md",true)
 end
@@ -11636,7 +11636,7 @@ Redis:del(Fast.."Rd:Manager:inline3am:text"..text)
 Redis:del(Fast.."Rd:Manager:inline3am:link"..text)
 Redis:del(Fast.."Set:Manager:rd:inline3am"..senderr..":"..msg_chat_id.."")
 Redis:srem(Fast.."List:Manager:inline3am", text)
-send(msg_chat_id,msg_id,"• تم حذف الرد من الردود الانلاين العامه","md",true)
+send(msg_chat_id,msg_id,"• تم حذف الرد من الردود الانلاين العامة","md",true)
 return false
 end
 end
@@ -11779,7 +11779,7 @@ Redis:set(Fast.."Set:Manager:rd:inline3am"..senderr..":"..msg_chat_id,"true2")
 return send(msg_chat_id,msg_id,"• ارسل الان الكلمه لحذفها من الردود الانلاين","md",false, false, false, false, reply_markup)
 end 
 
-if text == ("الردود الانلاين العامه") then
+if text == ("الردود الانلاين العامة") then
 if not msg.Devss then
 return send(msg_chat_id,msg_id,'\n*• هاذا الامر يخص المطور الثانوي * ',"md",true)
 end
@@ -11816,7 +11816,7 @@ end
 text = text..""..k.." » {"..v.."} » {"..db.."}\n"
 end
 if #list == 0 then
-text = "• عذرا لا يوجد ردود انلاين عامه"
+text = "• عذرا لا يوجد ردود انلاين عامة"
 end
 return send(msg_chat_id,msg_id,text,"md",true)
 end
@@ -11893,7 +11893,7 @@ Redis:del(Fast..''..v..text)
 end
 Redis:del(Fast.."Set:On:mz"..senderr..":"..msg_chat_id)
 Redis:srem(Fast.."List:Rd:Sudo:mz", text)
-return send(msg_chat_id,msg_id,"• تم حذف الرد من الردود العامه","md",true)  
+return send(msg_chat_id,msg_id,"• تم حذف الرد من الردود العامة","md",true)  
 end
 end
 
@@ -12291,7 +12291,7 @@ return false
 end
 
 
-if text == "تفعيل الصوتيات العامه" then
+if text == "تفعيل الصوتيات العامة" then
 if ChannelJoinch(msg) == false then
 local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Fast..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Fast..'Chat:Channel:Join'..msg.chat_id)}, },}}
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
@@ -12304,13 +12304,13 @@ if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
 end
 if not Redis:get(Fast..'lock_geamsAudio'..msg.chat_id) then 
-return send(msg_chat_id,msg_id,"• أهلا عزيزي "..msg.Name_Controller.."\n• الصوتيات العامه بالتاكيد تم تفعيلها\n✓" )
+return send(msg_chat_id,msg_id,"• أهلا عزيزي "..msg.Name_Controller.."\n• الصوتيات العامة بالتاكيد تم تفعيلها\n✓" )
 else 
 Redis:del(Fast..'lock_geamsAudio'..msg.chat_id) 
-return send(msg_chat_id,msg_id,"• أهلا عزيزي "..msg.Name_Controller.."\n• تم تفعيل الصوتيات العامه \n✓" )
+return send(msg_chat_id,msg_id,"• أهلا عزيزي "..msg.Name_Controller.."\n• تم تفعيل الصوتيات العامة \n✓" )
 end 
 end
-if text == "تعطيل الصوتيات العامه" then
+if text == "تعطيل الصوتيات العامة" then
 if ChannelJoinch(msg) == false then
 local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Fast..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Fast..'Chat:Channel:Join'..msg.chat_id)}, },}}
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
@@ -12323,10 +12323,10 @@ if not msg.Manger then
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
 end
 if Redis:get(Fast..'lock_geamsAudio'..msg.chat_id) then 
-return send(msg_chat_id,msg_id,"• أهلا عزيزي "..msg.Name_Controller.."\n• الصوتيات العامه بالتأكيد معطله\n✓" )
+return send(msg_chat_id,msg_id,"• أهلا عزيزي "..msg.Name_Controller.."\n• الصوتيات العامة بالتأكيد معطله\n✓" )
 else
 Redis:set(Fast..'lock_geamsAudio'..msg.chat_id,true)  
-return send(msg_chat_id,msg_id,"• أهلا عزيزي "..msg.Name_Controller.."\n• تم تعطيل الصوتيات العامه\n✓" )
+return send(msg_chat_id,msg_id,"• أهلا عزيزي "..msg.Name_Controller.."\n• تم تعطيل الصوتيات العامة\n✓" )
 end   
 end
 
@@ -12835,7 +12835,7 @@ Abs = math.random(2,140);
 local Text ='*✯‍︙تم اختيار الشعر لك فقط*'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = 'قناه السورس',url='http://t.me/'..chsource..''}},
+{{text = 'قناة السورس',url='http://t.me/'..chsource..''}},
 }
 local msg_id = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/L1BBBL/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -12955,7 +12955,7 @@ return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_
 end
 local list = Redis:smembers(Fast.."text:Games:Bot"..msg.chat_id)
 if #list == 0 then
-send(msg_chat_id,msg_id, "• لا توجد صوتيات عامه")
+send(msg_chat_id,msg_id, "• لا توجد صوتيات عامة")
 return false
 end
 for k,v in pairs(list) do
@@ -12996,7 +12996,7 @@ end
 Redis:set(Fast.."All:Add:audio:Games"..senderr..":"..msg.chat_id,'start')
 send(msg_chat_id,msg_id, '• ارسل اسم الصوت الان ...',"md")
 end
-if text== ("الصوتيات العامه") or text== ("الاغاني") then
+if text== ("الصوتيات العامة") or text== ("الاغاني") then
 if ChannelJoinch(msg) == false then
 local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Fast..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Fast..'Chat:Channel:Join'..msg.chat_id)}, },}}
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
@@ -13007,16 +13007,16 @@ return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة �
 end
 local list = Redis:smembers(Fast.."All:text:Games:Bot")
 if #list == 0 then
-send(msg_chat_id,msg_id, "• لا توجد صوتيات عامه")
+send(msg_chat_id,msg_id, "• لا توجد صوتيات عامة")
 return false
 end
-message = '• قائمه الصوتيات العامه:\n     للتشغيل اختر اسم من الاتي:\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n'
+message = '• قائمه الصوتيات العامة:\n     للتشغيل اختر اسم من الاتي:\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n'
 for k,v in pairs(list) do
 message = message..""..k.."- ("..v..")\n"
 end
 send(msg_chat_id,msg_id,message)
 end
-if text== ("مسح الصوتيات العامه") then
+if text== ("مسح الصوتيات العامة") then
 if ChannelJoinch(msg) == false then
 local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(Fast..'Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(Fast..'Chat:Channel:Join'..msg.chat_id)}, },}}
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
@@ -13363,7 +13363,7 @@ Abs = math.random(2,140);
 local Text ='*• تم اختيار الاغنيه لك*'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '- قناه السورس .',url='http://t.me/'..chsource..''}},
+{{text = '- قناة السورس .',url='http://t.me/'..chsource..''}},
 }
 local MsgId = msg.id/2097152/0.5
 local MSGID = msg.id/2097152/0.5
@@ -13500,7 +13500,7 @@ Abs = math.random(3,205);
 local Text ='*• تم اختيار الاغنيه لك*'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '- قناه السورس .',url='http://t.me/'..chsource..''}},
+{{text = '- قناة السورس .',url='http://t.me/'..chsource..''}},
 }
 local MsgId = msg.id/2097152/0.5
 local MSGID = 0
@@ -13515,7 +13515,7 @@ local json = JSON.decode(url)
 if url == "null" or #json <= 1 then
 return send(msg.chat_id,msg.id,'• لم استطيع العثور علي نتيجه في google play ')
 end
-local datar = {data = {{text = "قناه السورس" , url = 'http://t.me/'..chsource..''}}}
+local datar = {data = {{text = "قناة السورس" , url = 'http://t.me/'..chsource..''}}}
 if #json < 5 then
 for i = 1,#json do
 title = json[i].title
@@ -14538,7 +14538,7 @@ data = {
 {text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 {
-{text = 'قناه السورس', url = 'http://t.me/'..chsource..''}, 
+{text = 'قناة السورس', url = 'http://t.me/'..chsource..''}, 
 },
 }
 }
@@ -14551,7 +14551,7 @@ data = {
 {text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 {
-{text = 'قناه السورس', url = 'http://t.me/'..chsource..''}, 
+{text = 'قناة السورس', url = 'http://t.me/'..chsource..''}, 
 },
 }
 }
@@ -14561,7 +14561,7 @@ else
 local reply_markup = bot.replyMarkup{type = 'keyboard',resize = true,is_personal = true,
 data = {
 {
-{text = 'تعيين قناه السورس •',type = 'text'},{text = 'تعيين مطور السورس •', type = 'text'},
+{text = 'تعيين قناة السورس •',type = 'text'},{text = 'تعيين مطور السورس •', type = 'text'},
 },
 {
 {text = 'تفعيل التواصل •',type = 'text'},{text = 'تعطيل التواصل •', type = 'text'},
@@ -14606,10 +14606,10 @@ data = {
 {text = "ضع صورة للترحيب •",type = 'text'},{text = 'معلومات التنصيب •',type = 'text'},
 },
 {
-{text = 'تغيير كليشه المطور •',type = 'text'},{text = 'مسح كليشه المطور •', type = 'text'},
+{text = 'تغيير رسالة المطور •',type = 'text'},{text = 'مسح رسالة المطور •', type = 'text'},
 },
 {
-{text = 'تغيير كليشه ستارت •',type = 'text'},{text = 'مسح كليشه ستارت •', type = 'text'},
+{text = 'تغيير رسالة ستارت •',type = 'text'},{text = 'مسح رسالة ستارت •', type = 'text'},
 },
 {
 {text = 'تنظيف المجموعات •',type = 'text'},{text = 'تنظيف المشتركين •', type = 'text'},
@@ -14621,7 +14621,7 @@ data = {
 {text = 'اضف رد عام •',type = 'text'},{text = 'مسح رد عام •', type = 'text'},
 },
 {
-{text = 'الردود العامه •',type = 'text'},{text = 'مسح الردود العامه •', type = 'text'},
+{text = 'الردود العامة •',type = 'text'},{text = 'مسح الردود العامة •', type = 'text'},
 },
 {
 {text = 'تحديث الملفات •',type = 'text'},{text = 'تحديث السورس •', type = 'text'},
@@ -14643,18 +14643,18 @@ if text:match("^@(.*)$") then
 Redis:del(Fast.."set:chsource"..senderr)
 local chsource = text:match("^@(.*)$") 
 Redis:set(Fast..'chsource',chsource)
-send(msg_chat_id,msg_id,'\n• تم حفظ قناه السورس')
+send(msg_chat_id,msg_id,'\n• تم حفظ قناة السورس')
 dofile('Fast.lua')  
 else
 send(msg_chat_id,msg_id,'\n• ارسل المعرف بشكل صحيح')
 end
 end
-if text == "تعيين قناه السورس •" then
+if text == "تعيين قناة السورس •" then
 if not msg.Devss then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص  '..Controller_Num(2)..' * ',"md",true)  
 end
 Redis:set(Fast.."set:chsource"..senderr,true)
-send(msg_chat_id,msg_id,'• ارسل الان معرف قناه السورس ',"md",true)  
+send(msg_chat_id,msg_id,'• ارسل الان معرف قناة السورس ',"md",true)  
 end
 if text and Redis:get(Fast.."set:devsource"..senderr) then
 if text == "الغاء الامر •" then
@@ -14777,7 +14777,7 @@ else
 return send(msg_chat_id,msg_id,'*• العدد الكلي { '..#list..' } للمجموعات \n• لا توجد مجموعات وهميه*',"md")
 end
 end
-if text == 'تغيير كليشه ستارت •' then 
+if text == 'تغيير رسالة ستارت •' then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -14790,9 +14790,9 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:setex(Fast.."Change:Start:Bot"..senderr,300,true) 
-return send(msg_chat_id,msg_id,"• ارسل لي كليشه Start الان ","md",true)  
+return send(msg_chat_id,msg_id,"• ارسل لي رسالة Start الان ","md",true)  
 end
-if text == 'مسح كليشه ستارت •' then 
+if text == 'مسح رسالة ستارت •' then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -14805,7 +14805,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(Fast.."Start:Bot") 
-return send(msg_chat_id,msg_id,"• تم مسح كليشه Start ","md",true)   
+return send(msg_chat_id,msg_id,"• تم مسح رسالة Start ","md",true)   
 end
 if text == 'تغيير اسم البوت •' then 
 if not msg.Asasy then 
@@ -14865,7 +14865,7 @@ return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة �
 end
 send(msg_chat_id,msg_id,'*• عدد احصائيات البوت الكامله \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n• عدد المجموعات : '..(Redis:scard(Fast..'ChekBotAdd') or 0)..'\n• عدد المشتركين : '..(Redis:scard(Fast..'Num:User:Pv') or 0)..'*',"md",true)  
 end
-if text == 'تغيير كليشه المطور •' then
+if text == 'تغيير رسالة المطور •' then
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -14878,9 +14878,9 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast..'GetTexting:DevFast'..msg_chat_id..':'..senderr,true)
-return send(msg_chat_id,msg_id,'• ارسل لي الكليشه الان')
+return send(msg_chat_id,msg_id,'• ارسل لي الرسالة الان')
 end
-if text == 'مسح كليشه المطور •' then
+if text == 'مسح رسالة المطور •' then
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -14893,7 +14893,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(Fast..'Texting:DevFast')
-return send(msg_chat_id,msg_id,'• تم مسح كليشه المطور')
+return send(msg_chat_id,msg_id,'• تم مسح رسالة المطور')
 end
 if text == 'اضف رد عام •' then 
 if not msg.Asasy then 
@@ -14908,7 +14908,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Set:Rd"..senderr..":"..msg_chat_id,true)
-return send(msg_chat_id,msg_id,"• ارسل الان الكلمه لاضافتها في الردود العامه ","md",true)  
+return send(msg_chat_id,msg_id,"• ارسل الان الكلمه لاضافتها في الردود العامة ","md",true)  
 end
 if text == 'مسح رد عام •' then 
 if not msg.Asasy then 
@@ -14923,7 +14923,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(Fast.."Set:On"..senderr..":"..msg_chat_id,true)
-return send(msg_chat_id,msg_id,"• ارسل الان الكلمه لمسحها من الردود العامه","md",true)  
+return send(msg_chat_id,msg_id,"• ارسل الان الكلمه لمسحها من الردود العامة","md",true)  
 end
 if text=='اذاعه خاص •' then 
 if not msg.Asasy then 
@@ -15032,7 +15032,7 @@ send(msg_chat_id,msg_id,"• ارسل لي التوجيه الان\n• ليتم
 return false
 end
 
-if text == ("الردود العامه •") then 
+if text == ("الردود العامة •") then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -15045,7 +15045,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(
 return send(msg.chat_id,msg.id,'*\n• عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local list = Redis:smembers(Fast.."List:Rd:Sudo")
-text = "\n📝︙قائمة الردود العامه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "\n📝︙قائمة الردود العامة \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 if Redis:get(Fast.."Add:Rd:Sudo:Gif"..v) then
 db = "متحركه 🎭"
@@ -15073,7 +15073,7 @@ text = "• لا توجد ردود للمطور"
 end
 return send(msg_chat_id,msg_id,"["..text.."]","md",true)  
 end
-if text == ("مسح الردود العامه •") then 
+if text == ("مسح الردود العامة •") then 
 if not msg.Asasy then 
 return send(msg_chat_id,msg_id,'\n*• هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -15098,7 +15098,7 @@ Redis:del(Fast.."Add:Rd:Sudo:Audio"..v)
 Redis:del(Fast.."Add:Rd:Sudo:video_note"..v)
 Redis:del(Fast.."List:Rd:Sudo")
 end
-return send(msg_chat_id,msg_id,"• تم مسح الردود العامه","md",true)  
+return send(msg_chat_id,msg_id,"• تم مسح الردود العامة","md",true)  
 end
 if text == 'مسح المطورين •' then
 if not msg.Asasy then 
