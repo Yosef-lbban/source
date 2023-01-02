@@ -132,7 +132,7 @@ local TextHelp = [[*
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 • نقاطي ← لعرض عدد النقاط 
 • بيع نقاطي + { العدد } 
-لبيع كل نقطه مقابل {50} رساله
+لبيع كل نقطه مقابل {50} رسالة
 *]]
 return send(msg_chat_id,msg_id,TextHelp,"md",false, false, false, false, reply_markup)
 end
@@ -1273,7 +1273,7 @@ end
 local NumberGet = (tonumber(NumGame) * 50)
 Redis:decrby(Fast.."Num:Add:Games"..msg.chat_id..msg.sender_id.user_id,NumGame)  
 Redis:incrby(Fast.."Num:Message:User"..msg.chat_id..":"..msg.sender_id.user_id,NumberGet)  
-return send(msg.chat_id,msg.id,"• تم خصم *~ { "..NumGame.." }* من نقاطك \n• وتم اضافة* ~ { "..NumberGet.." } رساله الى رسائلك *","md",true)  
+return send(msg.chat_id,msg.id,"• تم خصم *~ { "..NumGame.." }* من نقاطك \n• وتم اضافة* ~ { "..NumberGet.." } رسالة الى رسائلك *","md",true)  
 end 
 if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id ~= 0 and Redis:get(Fast.."Status:Games"..msg.chat_id) then
 if ChannelJoinch(msg) == false then
