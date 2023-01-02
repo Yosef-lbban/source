@@ -2740,7 +2740,7 @@ local TextHelp = [[*
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 • نقاطي ← لعرض عدد النقاط 
 • بيع نقاطي + { العدد } 
-لبيع كل نقطه مقابل {50} رساله
+لبيع كل نقطه مقابل {50} رسالة
 *]]
 edit(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
 end
