@@ -13310,7 +13310,7 @@ data = datar
 }
 send(msg.chat_id,msg.id,'• نتائج بحثك عن *'..q..'* في play store',"md",false, false, false, false, reply_markup)
 else
-send(msg.chat_id,msg.id,"• البحث باللغه الانجليزيه فقط")
+send(msg.chat_id,msg.id,"• البحث باللغه الانجليزية فقط")
 end
 end
 if text then
